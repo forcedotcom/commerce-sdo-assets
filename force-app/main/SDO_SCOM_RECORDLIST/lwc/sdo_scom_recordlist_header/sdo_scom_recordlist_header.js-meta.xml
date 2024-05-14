@@ -1,0 +1,8 @@
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>false</isExposed>
+
+    <masterLabel>SDO RecordList Header</masterLabel>
+    <description>SDO RecordList View Header Component</description>
+
+</LightningComponentBundle>

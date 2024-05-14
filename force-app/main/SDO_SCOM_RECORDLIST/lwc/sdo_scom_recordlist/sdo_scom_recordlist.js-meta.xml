@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+
+    <masterLabel>SDO RecordList</masterLabel>
+    <description>SDO RecordList View Component</description>
+    
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__Tab</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightningCommunity__Default">
+            <property name="queryType" label="Query Type" type="String" description="Select the type of the query" datasource="Entity List,Related List,List View" default="Entity List" required="true" /> 
+            <property name="sObjectName" type="String" label="Entity" description="sObject API name"/>
+            <property name="recordId" type="String" label="Related List Record Id" description="Entity Id/Expression of the parent object"/>
+            <property name="listViewName" type="String" label="List View API Name" description="Object List View Name"/>
+            <property label="Label to Display " name="objectlabel" type="String" description="label name to be displayed for Object list"/>
+            <property name="columns" type="String" label="Fields to display" description="Comma separated Object Field API names"/>
+            <property name="filters" type="String" label="Filters to add"/>
+            <property name="sortBy" type="String" label="Sort By" description="API name of the field for default sort"/>
+            <property name="sortDirection" type="String" label="Sort Direction" description="asc or desc" datasource="asc,desc"/>
+            <!-- <property name="paginationEnabled" type="Boolean" label="Pagination Enabled?"/>  -->
+            <property name="paginationRecordsPerStep" type="Integer" label="Records per page"/>
+            <property name="tableHeight" type="String" label="Table Height in em or px"/>
+            <property name="showRowNumberColumn" type="Boolean" label="Show row number Column?"/>
+            <!-- <property name="showCheckboxes" type="Boolean" label="Show Checkbox" description="Show checkboxes for bulk actions"/> -->
+            <!-- <property name="hideSearchBar" type="Boolean" label="Hide Search Bar?"/> -->
+            <property name="deletebutton" type="Boolean" label="Delete button" description="Show Delete Button for records"/>
+            <property name="newbutton" type="Boolean" label="New Button" description="Show New Button for  records"/>
+            <property name="editbutton" type="Boolean" label="Edit Button" description="Show Edit Button for records"/>
+            <!-- <property name="showHistory" type="Boolean" label="Show History" description="Show History"/> -->
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

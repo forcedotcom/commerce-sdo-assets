@@ -1,0 +1,79 @@
+<template>
+    <lightning-card class="card-container">
+        <div if:true={reviewData.length} class="container">
+            <div class="product-review-header">
+                <h1 class="product-review-title"><strong>Product Reviews</strong></h1>
+                <div class="slds-var-m-around_medium">
+                    <lightning-button 
+                        label="WRITE A REVIEW"
+                        onclick={handleShowModal}
+                        disabled={hasUserPostedReview}
+                        class="product-review-button"></lightning-button>
+                    <c-sdo_scom_product_reviews_rating
+                        record-id={recordId}
+                        onsubmitmodal={handleSubmitModal}></c-sdo_scom_product_reviews_rating>       
+                </div>
+            </div>
+            <div class="product-average-rating-container">
+                <div class="avg-rating">
+                    <div class="avg-numeric-rating">{averageReviewRating}</div>
+                    <div class="avg-star-rating">
+                        <template for:each={stars} for:item="star">
+                            <div key={star.rating} class={star.style}>&#9733;</div>
+                        </template>
+                    </div>
+                    <div class="sort-by-container">
+                        <lightning-combobox
+                            placeholder="Sort By"
+                            options={sortOptions}
+                            value={selectedSortOption}
+                            onchange={handleSortChange}></lightning-combobox>
+                    </div>
+                </div>
+                <div class="avg-rating-text"><strong>AVERAGE RATING</strong></div>
+                <div style="display: flex; margin-bottom: 10px">
+                    <div class="avg-rating-text">{reviewData.length} TOTAL REVIEWS</div>
+                </div>
+            </div>
+            
+            <template for:each={displayedData} for:item="item">
+                <div key={item.id} class="product-review-container">
+                    <div class="reviews">
+                        <div class="user-name"><strong>{item.data.username}</strong></div>
+                        <template for:each={item.stars} for:item="star">
+                            <span key={star.rating} class={star.style}>&#9733;</span>
+                        </template>
+                        <div class="review-date">Review posted on {item.data.date}</div>
+                    </div>
+                </div>
+    
+                <div key={item.id} class="review-comment-container">
+                    <div class="review-title"><strong>{item.data.title}</strong></div>
+                    <div class="review-desc">{item.data.description}</div>
+                </div>
+            </template>
+
+            <c-sdo_scom_product_reviews_pagination
+                current-page={currentPage}
+                total-pages={totalPages}
+                onpreviouspage={handlePreviousPage}
+                onnextpage={handleNextPage}></c-sdo_scom_product_reviews_pagination>
+        </div>
+
+        <div if:false={reviewData.length}>
+            <div class="product-review-header">
+                <h1 class="product-review-title"><strong>Be the first one to review this product!</strong></h1>
+                <div class="slds-var-m-around_medium">
+                    <lightning-button 
+                        label="WRITE A REVIEW"
+                        onclick={handleShowModal}
+                        disabled={hasUserPostedReview}
+                        class="product-review-button"></lightning-button>
+                    <c-sdo_scom_product_reviews_rating
+                        record-id={recordId}
+                        onsubmitmodal={handleSubmitModal}></c-sdo_scom_product_reviews_rating>       
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

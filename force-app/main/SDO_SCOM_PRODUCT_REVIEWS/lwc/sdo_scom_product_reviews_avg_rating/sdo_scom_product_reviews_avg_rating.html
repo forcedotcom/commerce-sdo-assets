@@ -1,0 +1,12 @@
+<template>
+    <div class="product-average-rating-container">
+        <div class="avg-rating">
+            <div class="avg-numeric-rating">{averageReviewRating}</div>
+            <div class="avg-star-rating">
+                <template for:each={stars} for:item="star">
+                    <div key={star.rating} class={star.style}>&#9733;</div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,76 @@
+<template>
+    <template if:true={showPopUp}>
+      <div class="container">
+        <section
+            role="dialog"
+            tabindex="-1"
+            aria-labelledby="modal-heading-01"
+            aria-modal="true"
+            aria-describedby="modal-content-id-1"
+            class="slds-modal slds-fade-in-open">
+  
+          <div class="slds-modal__container">
+              <lightning-button-icon
+                    class="slds-modal__close"
+                    title="Close"
+                    icon-name="utility:close"
+                    icon-class="slds-button_icon-inverse"
+                    onclick={handleDialogClose}></lightning-button-icon>
+  
+            <div 
+              class="slds-modal__content slds-p-around__medium slds-modal__content_headless pop-up-container" 
+              id="modal-content-id-1">
+  
+                <div class="review-form">
+                    <h1 class="review-form-title">Review & Rate</h1>
+
+                    <div class="review-form-container">
+                        <div class="product-star-rating-container">
+                            <h2 class="overall-rating-title">Overall Rating</h2>
+                            <div class="product-rating-container">
+                                <div class="product-rating">
+                                    <span data-rating="5">&#9733;</span>
+                                    <span data-rating="4">&#9733;</span>
+                                    <span data-rating="3">&#9733;</span>
+                                    <span data-rating="2">&#9733;</span>
+                                    <span data-rating="1">&#9733;</span>
+                                </div>
+                            </div> 
+                        </div>
+                        <div>
+                            <h2 class="review-title">Review Title</h2>
+                            <lightning-input
+                                class="review-title-input"
+                                type="text"
+                                label="Text input with a placeholder"
+                                variant="label-hidden"
+                                placeholder="Review title"
+                                onchange={handleTitleChange}></lightning-input>
+                        </div>
+                        <div>
+                            <h2 class="review-comments">Product Review</h2>
+                            <lightning-textarea 
+                                class="review-comments-input"
+                                name="input3" 
+                                label="Textarea field with a placeholder" 
+                                variant="label-hidden"
+                                placeholder="Type here..."
+                                onchange={handleDescriptionChange}></lightning-textarea>
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="review-submit slds-button slds-button_brand"
+                            onclick={handleSubmitReview}>
+                            Submit Review
+                        </button> 
+                    </div>
+
+                </div>
+            </div>
+          </div>
+        </section>
+  
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </div>
+    </template>
+  </template>

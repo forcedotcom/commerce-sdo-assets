@@ -1,0 +1,90 @@
+<template>
+    <div if:false={isLoaded} class="slds-is-relative">
+        <div class="loading"></div>
+    </div> 
+    <lightning-card>
+          <c-sdo_scom_recordlist_header
+            objectlabel={objectlabel}
+            total-record-count={totalRecordCount}
+            newbutton={newbutton}
+            filters={filters}
+            onaddrecord={addRecord}
+            >
+          </c-sdo_scom_recordlist_header>
+        <div class="recordList">
+         <c-sdo_scom_recordlist_custom
+            data={records}
+            columns={headers}
+            key-field="Id"
+            hide-checkbox-column=true
+            show-row-number-column={showRowNumberColumn}
+            onrowaction={handleRowAction}
+            enable-infinite-loading=true
+            onloadmore={loadMoreData}
+            default-sort-direction={sortDirection}
+            sorted-direction={sortDirection}
+            sorted-by={sortBy}
+            onsort={onHandleSort}
+            class="slds-max-medium-table_stacked"
+          >
+          </c-sdo_scom_recordlist_custom>
+        </div> 
+        <div slot="footer">  
+            <!-- <template if:true={hasMessage}>
+                <div class={pageMessageParentDivClass} role="alert">
+                    <span class={pageMessageChildDivClass} title={messageTitle}>
+                        <lightning-icon icon-name={messageIcon} alternative-text={messageTitle} title={messageTitle} size="small"></lightning-icon>
+                    </span>
+                    <h2>{messageSummary}</h2>
+                </div>
+            </template>  -->
+        </div>
+    </lightning-card>
+    <template if:true={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={hideModalBox}>
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                
+                <!-- Modal/Popup header-->
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{recordFormLabel}</h1>
+                </div>
+
+                <!-- Modal/Popup body -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div if:true={isEditClicked}>
+                        <lightning-record-form
+                            object-api-name={editObjectName}
+                            record-id={editRecordId}
+                            layout-type="Full"
+                            columns="2"
+                            mode={viewMode}
+                            onsuccess={onEditHandleSuccess}
+                            >    
+                        </lightning-record-form>
+                    </div> 
+                    <div if:true={isAddClicked}>
+                        <lightning-record-form
+                            object-api-name={editObjectName}
+                            layout-type="Full"
+                            columns="2"
+                            onsuccess={onAddHandleSuccess}
+                            >    
+                        </lightning-record-form>
+                    </div>       
+                </div>
+
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={hideModalBox}>Cancel</button>
+                </div>
+            </div>
+        </section>    
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>      
+    </template>
+
+</template>

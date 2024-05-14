@@ -1,0 +1,8 @@
+<template>
+    <div class="pagination">
+        <div>{currentPage} of </div>
+        <lightning-button-icon icon-name="utility:chevronleft" onclick={previousPage} disabled={isFirstPage}></lightning-button-icon>
+        <div>{totalPages}</div>
+        <lightning-button-icon icon-name="utility:chevronright" onclick={nextPage} disabled={isLastPage}></lightning-button-icon>
+    </div>
+</template>
