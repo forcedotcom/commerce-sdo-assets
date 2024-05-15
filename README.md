@@ -1,4 +1,4 @@
-# Demo Components for Solution Engineers.  
+# Demo Components for Solution Engineers  
 
 ## Overview  
 
