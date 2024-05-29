@@ -170,7 +170,7 @@ public without sharing class Sdo_scom_recordlist_wrapper_controller {
                     fieldDetailsMap.put('apiname', apiName);
                     fieldDetailsMap.put('picklistValues',null);
                     if(fieldDescribeResult.isCalculated()){
-                        if(fieldDescribeResult.getCalculatedFormula().contains('IMAGE')){
+                        if(fieldDescribeResult.getCalculatedFormula() != null && fieldDescribeResult.getCalculatedFormula().contains('IMAGE')){
                             fieldDetailsMap.put('displaytype','IMAGE');
                         }else{
                             fieldDetailsMap.put('displaytype', 'formula');
