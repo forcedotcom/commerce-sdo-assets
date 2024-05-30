@@ -27,12 +27,12 @@ These components can be utilized by developers, solution architects, and other s
 3. Please follow the specific instructions provided in the feature's subdirectory for setup and execution.  
 
 
-## Generating Unamanged Packages
+## Generating Unmanaged Packages
 
 The easiest way to deploy a feature is to generate an unmanaged package and deploy it using Workbench. To generate
 the unmanaged packages using the CLI, go to the `unmanaged-packages` subdirectory and run the corresponding `.sh`, like `./create-recordlist.sh` (only tested on Mac). Make sure that the files are executable by running `chmod 755 *.sh` within that folder. `./create-all.sh` is also an automation for generating all the packages.  
 
-The result packages are located in `unmanaged-packages/bin`. Note that this folder is not checked-in Git.
+The result packages are located in `unmanaged-packages/bin`. Note that this folder is not checked in to Git.
 
 
 ## Contributing  
