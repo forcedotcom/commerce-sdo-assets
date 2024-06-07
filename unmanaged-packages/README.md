@@ -11,7 +11,7 @@ chmod 755 *.sh
 
 Then run the following command to generate all the packages:  
 ```sh
-./create-all.sh
+./package-all.sh
 ```
 
 You can also generate individual packages by running:  
