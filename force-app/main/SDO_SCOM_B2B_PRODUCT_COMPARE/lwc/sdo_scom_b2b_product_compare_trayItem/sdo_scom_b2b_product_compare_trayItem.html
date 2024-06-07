@@ -1,0 +1,41 @@
+<template>
+    <article class="slds-card slds-var-m-bottom_small productContainer">
+        <div class="slds-card__body slds-card__body_inner">
+            <!-- IMAGE -->
+            <div class="prodImage" >
+                <a href={product.productLink} class="slds-align_absolute-center">
+                    <img id={product.image.id} src={product.image.url}
+                        alt={product.image.title} style="max-width: 75px; max-height: 75px;" />
+                </a>
+            </div>
+            <div>
+                <div class="slds-text-body_small">
+                    <!-- NAME-->
+                    <div class="slds-var-m-vertical_small prodName slds-truncate">
+                        <a href={productLink}>{productName}</a>
+                    </div>
+
+                    <!-- SKU -->
+                    <div class="slds-var-m-vertical_small prodSKU" style={skuColorStyle}>
+                        <p style={skuColorStyle}>{productSku}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="slds-card__footer slds-p-horizontal_none slds-p-bottom_none">
+            <div class="slds-button-group slds-align_absolute-center" role="group">
+                <div>
+                    <lightning-button 
+                        variant="base" 
+                        label={labels.component.removeLink} 
+                        title={labels.component.removeLink} 
+                        data-productid={product.id}
+                        onclick={handleRemoveItem} 
+                        class="slds-p-left_xx-small link">
+                    </lightning-button>
+                </div>
+            </div>
+        </footer>
+    </article>
+</template>

@@ -1,0 +1,39 @@
+<template>
+    <template if:true={showLoadingSpinner}>
+		<lightning-spinner size="medium" alternative-text={labels.component.altPleaseWait}></lightning-spinner>
+	</template>
+
+    <!-- HEADER -->
+
+    <div class="slds-grid slds-gutters container">
+        <div class="slds-col">
+            <div class="slds-var-m-bottom_small">
+                <div class={headerAlignmentClass}>
+                    <div class={headerSizeClass}>
+                        <div style={headingColorStyle}>
+                            {heading}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template if:true={hasProducts}>
+        <c-sdo_scom_b2b_product_compare_results_table
+            products={products}
+            facetable-attribute-settings={facetableAttributeSettings}
+            effective-account-id={effectiveAccountId}
+            webstore-id={webstoreId}
+            hide-sku={hideSku}
+            hide-add-to-cart={hideAddToCart}
+            go-to-cart={goToCart}
+            display-prices={displayPrices}
+            hide-savings={hideSavings}
+            hide-list-price={hideListPrice}
+            hide-description={hideDescription}
+            header-alignment-class={headerAlignmentClass}
+            header-size-class={headerSizeClass}
+            heading-color-style={headingColorStyle}></c-sdo_scom_b2b_product_compare_results_table>
+    </template>
+</template>

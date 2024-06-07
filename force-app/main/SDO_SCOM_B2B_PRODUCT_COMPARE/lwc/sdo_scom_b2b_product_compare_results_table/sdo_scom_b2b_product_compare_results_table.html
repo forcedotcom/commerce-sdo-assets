@@ -1,0 +1,187 @@
+<template>
+    <table>
+        <!-- SKU -->
+        <tr>
+            <th class="columnspacer">&nbsp;</th>
+            <template for:each={products} for:item="product">
+                <th class="column header" style={columnWidthStyle} key={product.productDetail.id}>
+                    {product.productDetail.fields.StockKeepingUnit}
+                </th>
+            </template>
+        </tr>
+
+        <!-- IMAGE -->
+        <tr>
+            <td class="columnspacer">&nbsp;</td>
+            <template for:each={products} for:item="product">
+                <td class="column" key={product.productDetail.id}>
+                    <div class="prodImage" style={imageContainerHeightStyle}>
+                        <a href={product.productLink} class="slds-align_absolute-center">
+                            <img id={product.productDetail.defaultImage.id}
+                                 src={product.productDetail.defaultImage.url}
+                                 alt={product.productDetail.defaultImage.title}
+                                 style={imageMaxHeightStyle} />
+                        </a>
+                    </div>
+                </td>
+            </template>
+        </tr>
+
+        <!-- NAME -->
+        <tr>
+            <td class="columnspacer">&nbsp;</td>
+            <template for:each={products} for:item="product">
+                <td class="column" key={product.productDetail.id}>
+                    <a href={product.productDetail.productLink}>{product.productDetail.fields.Name}</a>
+                </td>
+            </template>
+        </tr>
+
+        <!-- DESCRIPTION -->
+        <tr>
+            <td class="columnspacer">&nbsp;</td>
+            <template for:each={products} for:item="product">
+                <td class="column" key={product.productDetail.id}>
+                    {product.productDetail.fields.Description}
+                    <lightning-formatted-rich-text value={product.productDetail.fields.Description}></lightning-formatted-rich-text>
+                </td>
+            </template>
+        </tr>
+
+        <!-- PRICES -->
+        <tr>
+            <td class="columnspacer">&nbsp;</td>
+            <template for:each={products} for:item="product">
+                <td class="column" key={product.productDetail.id}>
+                    <span class="slds-var-m-right_xx-small slds-text-body_small basePrice">
+                        List Price: &nbsp;
+                            <lightning-formatted-number
+                                value={product.productPrice.listPrice}
+                                format-style="currency"
+                                currency-code={currencyCode}
+                                currency-display-as="symbol">
+                            </lightning-formatted-number>
+                    </span>
+
+                    <br/>
+
+                    <span class="calculatedPrice">
+                        <lightning-formatted-number
+                            value={product.productPrice.unitPrice}
+                            format-style="currency"
+                            currency-code={currencyCode}
+                            currency-display-as="symbol">
+                        </lightning-formatted-number>
+                    </span>
+
+                    <br/>
+
+                    You Save: &nbsp;
+
+                    <lightning-formatted-number
+                            value={product.productPrice.savings}
+                            format-style="currency"
+                            currency-code={currencyCode}
+                            currency-display-as="symbol"></lightning-formatted-number>
+                </td>
+            </template>
+        </tr>
+
+        <!-- ADD TO CART -->
+        <template if:false={hideAddToCart}>
+            <tr>
+                <td class="columnspacer">&nbsp;</td>
+                <template for:each={products} for:item="product">
+                    <td class="column" key={product.productDetail.id}>
+                        <lightning-input 
+                            type="number" 
+                            name="input1" 
+                            label={labels.component.addToCartQtyLabel} 
+                            step="1" 
+                            value="1" 
+                            min="1" 
+                            variant="label-inline"
+                            onchange={handleQtyChange}></lightning-input>
+                        <button 
+                            id={product.productDetail.id} 
+                            data-productid={product.productDetail.id}
+                            class="slds-button slds-button_brand slds-button_stretch"
+                            disabled={addToCompareDisabled}
+                            onclick={handleAddToCart}>
+
+                            <lightning-icon 
+                                icon-name="utility:cart" 
+                                alternative-text={labels.component.addToCartBtn} 
+                                title={labels.component.addToCartBtn} 
+                                variant="inverse" 
+                                size="x-small"></lightning-icon>
+
+                            &nbsp;
+
+                            {labels.component.addToCartBtn}
+                        </button>
+                    </td>
+                </template>
+            </tr>
+        </template>
+    </table>
+
+    <!-- PRODUCT SPECIFICATIONS -->
+
+    <div class="slds-grid slds-gutters container">
+        <div class="slds-col">
+            <div class="slds-var-m-bottom_small">
+                <div class={headerAlignmentClass}>
+                    <div class={headerSizeClass}>
+                        <div style={headingColorStyle}>
+                            {labels.component.productSpecsHeading}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <table class="specsTable">
+
+        <!-- NAME -->
+        <tr class="specsTableRow">
+            <td class="column columnspacer">{labels.component.name}</td>
+            <template for:each={products} for:item="product">
+                <td class="column" style={columnWidthStyle} key={product.productDetail.id}>
+                    <a href={product.productDetail.productLink}>{product.productDetail.fields.Name}</a>
+                </td>
+            </template>
+        </tr>
+
+        <!-- PRICES -->
+        <tr class="specsTableRow">
+            <td class="column columnspacer">{labels.component.price}</td>
+            <template for:each={products} for:item="product">
+                <td class="column" style={columnWidthStyle} key={product.productDetail.id}>
+                    <span class="calculatedPrice">
+                            <lightning-formatted-number
+                                value={product.productPrice.unitPrice}
+                                format-style="currency"
+                                currency-code={currencyCode}
+                                currency-display-as="symbol"></lightning-formatted-number>
+                    </span>
+                </td>
+            </template>
+        </tr>
+
+        <!-- PRODUCT SPECS -->
+        <template for:each={facetableAttributeSettings} for:item="facet">
+            <tr class="specsTableRow" key={facet.name}>
+                <td class="column columnspacer">{facet.label}</td>
+
+                <!-- PRODUCT FACET VALUES -->
+                <template for:each={products} for:item="product">
+                    <td class="column" style={columnWidthStyle} key={product.productDetail.id}>
+                        <c-sdo_scom_b2b_product_compare_results_spec-item product={product} field-name={facet.name}></c-sdo_scom_b2b_product_compare_results_spec-item>
+                    </td>
+                </template>
+            </tr>
+        </template>
+    </table>
+</template>

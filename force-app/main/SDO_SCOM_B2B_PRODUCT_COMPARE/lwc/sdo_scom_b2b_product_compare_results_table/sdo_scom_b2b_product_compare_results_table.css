@@ -1,0 +1,19 @@
+.column {
+    padding: 10px;
+    vertical-align: top;
+}
+.header {
+    border-bottom: 2px solid #ccc;
+}
+
+.specsTable {
+    border-collapse: collapse;
+}
+
+.specsTableRow {
+    border-bottom: 2px solid #ccc;
+}
+
+.columnspacer {
+    width: 15%;
+}

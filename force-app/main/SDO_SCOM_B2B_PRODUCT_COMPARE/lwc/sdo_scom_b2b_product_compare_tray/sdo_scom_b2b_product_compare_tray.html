@@ -1,0 +1,28 @@
+<template>
+    <template if:true={hasProducts}>
+        <div class="slds-grid slds-wrap slds-gutters container productsContainer tiled">
+            <div class="slds-col slds-size_10-of-12">
+                <div class="slds-grid slds-wrap slds-gutters container productsContainer tiled">
+                    <template for:each={productList} for:item="product">
+                        <div class="tile-column slds-col slds-size_1-of-4" key={product.id}>
+                            <c-sdo_scom_b2b_product_compare_tray-item product={product} sku-color-style={skuColorStyle}></c-sdo_scom_b2b_product_compare_tray-item>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <div class="slds-col slds-size_2-of-12">
+                <lightning-button variant="brand" 
+                    label={labels.component.compareProductsBtn} 
+                    title={labels.component.compareProductsBtn} 
+                    onclick={handleCompareClick} 
+                    class="slds-p-left_xx-small link"></lightning-button>
+                <lightning-button variant="base" 
+                    label={labels.component.clearAllBtn} 
+                    title={labels.component.clearAllBtn} 
+                    onclick={handleClearAllClick} 
+                    class="slds-p-left_xx-small link"></lightning-button>
+            </div>
+        </div>
+    </template>
+</template>

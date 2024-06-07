@@ -1,0 +1,14 @@
+<template lwc:render-mode="light">
+    <ul class="items">
+      <!-- a11y ul/li -->
+        <template for:each={items} for:item="item">
+            <li key={item.id}>
+                <c-sdo_scom_mini_cart_popup_item 
+                    item={item} 
+                    ondelete={handleItemDelete} 
+                    ondecrease={handleItemDecrement} 
+                    onincrease={handleItemIncrement}></c-sdo_scom_mini_cart_popup_item>
+            </li>
+        </template>
+    </ul>
+</template>

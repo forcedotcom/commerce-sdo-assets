@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>SDO SCOM B2B Order Grid</masterLabel>
+    <targets>
+      <target>lightningCommunity__Page</target>
+      <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+      <targetConfig targets="lightningCommunity__Default">
+        <property
+          name="effectiveAccountId"
+          type="String"
+          label="Effective Account Id"
+          description="The Id of the account under which the user is acting (BETA)."
+          default="{!User.Commerce.EffectiveAccount.id}"/>
+          <property
+            name="cartBaseURL"
+            type="String"
+            default="cart"
+            label="Cart Base URL"
+            description="The cart base URL. Defaults to 'cart/cartId'"/>
+      </targetConfig> 
+    </targetConfigs>
+</LightningComponentBundle>

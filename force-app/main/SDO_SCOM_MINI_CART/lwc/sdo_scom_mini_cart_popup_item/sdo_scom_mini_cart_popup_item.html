@@ -1,0 +1,81 @@
+<template lwc:render-mode="light">
+    <div class="demo-only slds-size_3-of-4">
+        <div class="slds-media slds-media_center">
+
+            <div class="slds-media__figure">
+                <span class="slds-avatar slds-avatar_large">
+                    <figure>
+                        <div tabindex="-1">
+                            <experience-picture alternative-text={imgAltText} url={thumbnailImageUrl}></experience-picture>
+                        </div>
+                    </figure>
+                </span>
+            </div>
+
+            <div class="slds-media__body">
+                <div class="item-name">
+                    <a class="description-name-label" href={productUrl}>
+                        <div lwc:if={item}>
+                            <h2>{item.cartItem.productDetails.name}</h2>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="item-details-pills-qty">
+                    <div class="item-details">
+                        <span class="slds-grid slds-grid_vertical-align-center">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <button class="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+                                            title="Decrement counter"
+                                            onclick={handleDecrement}>
+                                        <svg class="slds-button__icon" aria-hidden="true">
+                                            <use href={incrementCounter}></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Increment counter</span>
+                                    </button>
+
+                                    <input 
+                                        type="number" 
+                                        id="state-required" 
+                                        value={itemCount} 
+                                        required=""
+                                        class="slds-input slds-input_counter" />
+                                        
+                                    <button 
+                                        class="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+                                        title="Increment counter"
+                                        onclick={handleIncrement}>
+                                        <svg class="slds-button__icon" aria-hidden="true">
+                                            <use href={decrementCounter}></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Decrement counter</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </span>
+                        <button 
+                            class="slds-button slds-button_icon slds-button_icon-large slds-input__button_delete delete-button"
+                            title="Delete button"
+                            onclick={handleDelete}>
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                <use href={deleteIcon}></use>
+                                </svg>
+                                <span class="slds-assistive-text">Delete button</span>
+                        </button>
+                    </div>
+                    
+                    <div class="item-unit-price">
+                        <div class="unitPrice">
+                            <lightning-formatted-number 
+                                  currency-code={currencyCode} 
+                                  format-style="currency"
+                                  maximum-fraction-digits="20" 
+                                  value={amount}></lightning-formatted-number>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

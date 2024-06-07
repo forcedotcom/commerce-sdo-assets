@@ -1,0 +1,89 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --slds-c-button-spacing-block-start: var(--dxp-g-spacing-xsmall);
+    --slds-c-button-spacing-block-end: var(--dxp-g-spacing-xsmall);
+}
+
+:host {
+    --com-c-variant-attribute-color: var(--dxp-s-body-small-text-color);
+    --com-c-variant-attribute-font-size: var(--dxp-s-body-font-size);
+    --com-c-pill-background-color: var(--com-c-cart-item-product-details-pill-background-color, var(--dxp-g-root-1));
+    --com-c-pill-border-color: var(--com-c-cart-item-product-details-pill-border-color, var(--dxp-g-root-1));
+    --com-c-pill-border-radius: var(--com-c-cart-item-product-details-pill-border-radius, var(--dxp-s-form-element-radius-border));
+    --com-c-pill-text-color: var(--com-c-cart-item-product-details-pill-text-color, var(--dxp-g-root-contrast));
+    --com-c-pill-font-size: var(--com-c-cart-item-product-details-pill-font-size, var(--dxp-g-font-size-4));
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 8.75rem 3fr min-content 1fr;
+    grid-template-rows: min-content;
+    grid-template-areas:
+        'image name unit prices'
+        'image details-pills-qty details-pills-qty delete';
+}
+
+.no-image-no-delete {
+    grid-template-columns: 3fr min-content 1fr;
+    grid-template-areas:
+        'name unit prices'
+        'details-pills-qty details-pills-qty details-pills-qty';
+}
+
+
+.item-name {
+    grid-area: name;
+}
+
+.item-name a {
+    text-decoration: none;
+}
+
+
+.item-unit-price {
+    grid-area: unit;
+    justify-self: end;
+}
+
+.description-name-label {
+    font-weight: var(--dxp-c-strong-text-weight);
+}
+
+.unitPrice {
+    color: var(--com-c-cart-item-unit-price-font-color, var(--dxp-g-root-contrast));
+    font-size: var(--com-c-cart-item-unit-price-font-size, var(--dxp-s-body-font-size));
+}
+
+.item-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media only screen and (max-width: 64em) {
+    .container {
+        grid-template-rows: repeat(4, auto);
+        grid-template-columns: 6.25rem 2fr 1fr;
+        grid-template-areas:
+            'image name prices'
+            'image unit unit'
+            'image details-pills-qty details-pills-qty'
+            'image delete delete';
+    }
+
+    .no-image {
+        grid-template-rows: auto min-content auto auto;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            'name prices'
+            'unit unit'
+            'details-pills-qty details-pills-qty'
+            'delete delete';
+    }
+
+    .item-unit-price {
+        justify-self: start;
+    }
+}

@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Quick Reorder">
+        <div class="slds-var-p-horizontal_small">
+            <c-sdo_scom_order-grid-header
+                show-table={showTable}
+                onselectyearevent={selectYearEventHandler}
+                onsearchevent={searchEventHandler}
+                onsortevent={sortEventHandler}
+                onresetquantitiesevent={resetQuantitiesEventHandler}>
+            </c-sdo_scom_order-grid-header>
+            <br>
+            <c-sdo_scom_order-grid-table
+                order-products={orderProducts}
+                cart-u-r-l={cartURL}
+                order-year={orderYear}
+                search-text={searchText}
+                sort-object={sortObject}
+                reset-quantities={resetQuantities}
+                cart-items={cartItems}
+                currency-code={currencyCode}
+                onshowtableevent={showTableEventHandler}
+                onaddtocartevent={addToCartEventHandler}
+                if:true={orderProducts}>
+            </c-sdo_scom_order-grid-table>
+            <h1 if:true={showErrorMessage}>You have no orders or you aren't a community user.</h1>
+        </div>
+    </lightning-card>
+</template>

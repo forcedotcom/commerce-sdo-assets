@@ -1,0 +1,85 @@
+<template>
+    <div if:true={showTable}>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Product Description">
+                            Product Description
+                        </div>
+                    </th>
+                    <th data-label="Quantity" scope="row">
+                        <div class="slds-truncate">Quantity</div>
+                    </th>
+                    <th data-label="Subtotal" scope="row">
+                        <div class="slds-truncate">Subtotal</div>
+                    </th>
+                </tr>
+
+
+            </thead>
+            <tbody>
+                <template for:each={tableRows} for:item="tableRow">
+
+                    <tr class="slds-hint-parent" key={tableRow.Id}>
+                        <th data-label="SKU" scope="row" style="white-space: break-spaces;">
+                            <a class="slds-text-link_reset" href={tableRow.productDetailURL}>
+                                <c-sdo_scom_order-grid-table-main-cell product-name={tableRow.name}
+                                    product-s-k-u={tableRow.SKU} product-image-u-r-l={tableRow.productImageURL}
+                                    product-attribute-map={tableRow.attributeMap}
+                                    product-attribute-set-info={tableRow.attributeSetInfo}
+                                    product-attribute-developer-name={tableRow.attributeDeveloperName}
+                                    product-unit-price={tableRow.productUnitPrice}
+                                    product-currency-code={tableRow.currencyIsoCode}>
+                                </c-sdo_scom_order-grid-table-main-cell>
+                            </a>
+                        </th>
+                        <th data-label="totalQuantity" scope="row">
+                            <c-sdo_scom_order-grid-product-quantity product-id={tableRow.Id}
+                                quantity-first={tableRow.quantityLast} cart-items={cartItems}
+                                onchangeproductquantityevent={changeProductQuantityHandler}>
+                            </c-sdo_scom_order-grid-product-quantity>
+                        </th>
+
+                        <th data-label="SubTotal" scope="row">
+                            <lightning-formatted-number currency-code={productCurrencyIsoCode} format-style="currency"
+                                maximum-fraction-digits="20"
+                                value={tableRow.productSubTotal}></lightning-formatted-number>
+                        </th>
+
+                    </tr>
+                </template>
+                <tr class="slds-hint-parent">
+                    <th data-label="Total Quantity" scope="row">
+                        <p class="slds-truncate slds-text-title_bold slds-align_absolute-center">Total Quantity</p>
+                    </th>
+                    <th data-label="totalNumberProducts" scope="row">
+                        <p class="slds-text-title_bold alignTotal">
+                            {totalProductQuantity1}                          
+                        </p>
+                    </th>
+                    <th data-label="totalNumberProducts" scope="row">
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <p class="verticalSpacing"></p>
+        <lightning-layout vertical-align="end">
+            <lightning-layout-item alignment-bump="right">
+                <c-pagination class="slds-float_left" number-of-pages={numberOfPages} current-page-number={pageNumber}
+                    onpaginationevent={paginationEventHandler}>
+                </c-pagination>
+            </lightning-layout-item>
+            <lightning-layout-item alignment-bump="left">
+                <lightning-button variant="brand" label="View Cart" title="View Cart" onclick={viewCart}
+                    class="slds-var-m-left_x-small">
+                </lightning-button>
+                <lightning-button variant="brand" label="Add to Cart" title="Add to Cart" onclick={addToCart}
+                    class="slds-var-m-left_x-small">
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    <h1 if:true={showNoOrdersMessage} class="errorMessage">You don't have any orders for {_orderYear}.</h1>
+    <h1 if:true={showNoMatchingProductsMessage} class="errorMessage">There are no matching products.</h1>
+</template>

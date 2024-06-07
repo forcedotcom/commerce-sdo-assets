@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>SDO SCOM Terms and Conditions</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="checkoutDetails" label="Checkout Binding Expression" type="String" default="{!Checkout.Details}"/>
+            <property name="buttonTitle" label="Button Title" type="String" default="Place Order"/>
+            <property name="termsAndConditions" label="Terms and Conditions Text" type="String" description="Please add terms and conditions in one whole paragraph with no new paragraphs"/>
+            <property name="termsAndConditionsHeading" label="Terms and Conditions Title" type="String" default=""/>
+            <property name="error" label="Error message" type="String" default=""/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,49 @@
+<template>
+
+    <template if:true={isLoading}>
+        <div style="color:rgb(27, 150, 255);z-index: 99999999;">
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+    </template>
+
+    <lightning-layout>
+        <lightning-layout-item size="12" style="text-align:right;" >
+            <lightning-button variant="brand" onclick={submitRule} icon-name="utility:save" label={label.BoostBury_SaveRule} class="slds-m-left_x-small"></lightning-button> 
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout>
+        <lightning-layout-item size="6" class="slds-p-around_x-small" >
+            <lightning-input type="text" onchange={setName} value={rule.name} label={label.BoostBury_Field_Name}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" class="slds-p-around_x-small" >
+            <lightning-input type="number" onchange={setLevel} value={rule.level} label={label.BoostBury_Field_Level} max="100"></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout> 
+
+    <lightning-layout>
+        <lightning-layout-item size="6" class="slds-p-around_x-small" >
+            <lightning-input type="datetime" onchange={setStartDate} value={rule.startDate} label={label.BoostBury_Field_StartDate} ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" class="slds-p-around_x-small" >
+            <lightning-input type="datetime" onchange={setEndDate} value={rule.endDate} label={label.BoostBury_Field_EndDate} ></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout style="display: inline-block;">
+        <lightning-layout-item size="6" style="display: inline-block;" class="slds-p-around_x-small" >
+            <lightning-input type="toggle" onchange={setAction} value={rule.action} message-toggle-active="Bury" message-toggle-inactive="Boost" label={label.BoostBury_Field_BoostBury}></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <label class="slds-label"><br/>&nbsp;{label.BoostBury_Field_ApplicableProducts}</label>
+    <lightning-layout>
+        <lightning-layout-item size="12" class="slds-p-around_x-small" >
+            <lightning-datatable
+                key-field="id"
+                data={productList}
+                columns={columns}>
+            </lightning-datatable>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

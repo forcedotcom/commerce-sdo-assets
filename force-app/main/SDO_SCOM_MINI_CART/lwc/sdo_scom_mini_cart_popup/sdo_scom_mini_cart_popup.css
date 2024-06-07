@@ -1,0 +1,65 @@
+svg {
+    --sds-c-icon-color-foreground-default: var(--com-c-unified-cart-badge-link-color, var(--dxp-s-button-color));
+}
+
+svg:hover, svg:focus {
+    --sds-c-icon-color-foreground-default: var(--com-c-unified-cart-badge-link-color-hover, var(--dxp-s-button-color-hover));
+}
+
+/**
+ * In order to stay consistent with the badge colors used in other page header
+ * elements (e.g. the notification bell icon), this overrides the badge background
+ * color set by the class .slds-notification-badge (see W-9689523).
+ */
+.slds-notification-badge {
+    background: var(--lwc-colorBackgroundNotificationBadge, rgb(234, 0, 30));
+}
+
+
+/**
+ * The SLDS slds-show-notification style applies an animation we don't want.
+ * Consequently, we do the one thing we would otherwise need that CSS class
+ * to do by making the element consistently opaque.
+ */
+.show-notification {
+    opacity: 1;
+}
+
+:host{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --slds-c-button-spacing-block-start: var(--dxp-g-spacing-xsmall);
+    --slds-c-button-spacing-block-end: var(--dxp-g-spacing-xsmall);
+}
+
+.items{
+    width: 100%;
+}
+
+.minicart{
+    position:absolute !important ; 
+    right:75px !important;
+}
+
+.description-name-label {
+    font-weight: var(--dxp-c-strong-text-weight);
+    margin-left: 45px; 
+    font-weight: bold;
+}
+
+.pop-up-footer {
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 64em) {
+    .container {
+        grid-template-rows: repeat(4, auto);
+        grid-template-columns: 6.25rem 2fr 1fr;
+        grid-template-areas:
+            'image name prices'
+            'image unit unit'
+            'image details-pills-qty details-pills-qty'
+            'image delete delete';
+    }
+}

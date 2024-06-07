@@ -1,0 +1,7 @@
+<template>
+    <span>
+        <lightning-button variant="brand" label="Previous" title="Previous" onclick={previousPage} disabled={previousButtonDisabled} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button variant="brand" label="Next" title="Next" onclick={nextPage} disabled={nextButtonDisabled} class="slds-m-left_x-small"></lightning-button>
+        &nbsp;&nbsp;Page {currentPageNumber}/{numberOfPages}
+    </span>
+</template>

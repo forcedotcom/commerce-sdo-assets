@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-3">
+            <img src={productImageURL} width="60">
+        </div>
+       <div class="slds-col slds-size_2-of-3">
+            {productName} <br>
+            {productSKU}
+            <br>
+            <lightning-formatted-number currency-code={productCurrencyCode} format-style="currency"
+            maximum-fraction-digits="20" value={productUnitPrice} style="color:black"></lightning-formatted-number>
+            <template for:each={mapOfValues} for:item="mapKey">
+                <div key={mapKey}>{mapKey.key}: {mapKey.value}</div>
+            </template>
+        </div>
+    </div>
+</template>

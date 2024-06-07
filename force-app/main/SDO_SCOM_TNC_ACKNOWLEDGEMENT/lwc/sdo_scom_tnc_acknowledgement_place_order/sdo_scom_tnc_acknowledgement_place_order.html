@@ -1,0 +1,29 @@
+<template>
+    <div if:true={displayPlaceOrder} class="container">
+        <div class="input-container">
+            <input
+                type="checkbox"
+                id="termsandconditions"
+                name="terms"
+                checked={checked}
+                onchange={handleChange}></input>
+            <label class="slds-p-left_x-small" for="termsandconditions">
+                I accept the &nbsp;
+                <a onclick={handleShowModal}>Terms & Conditions</a>
+                <c-sdo_scom_tnc_acknowledgement_modal 
+                    terms-and-conditions={termsAndConditions}
+                    error={error}
+                    terms-and-conditions-heading={termsAndConditionsHeading}></c-sdo_scom_tnc_acknowledgement_modal>
+            </label>
+        </div>
+        <label if:true={showError} class="slds-text-color_error">
+            {error}
+        </label>
+    </div>
+            
+    <button class="checkout-button slds-button slds-button_brand"
+            onclick={handleButtonClick}
+            disabled={disabled}>
+        {buttonTitle}
+    </button>
+</template>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>BoostBury_SaveRule</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_SaveRule</shortDescription>
+        <value>Save Rule</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Field_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Field_Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Field_Level</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Field_Level</shortDescription>
+        <value>Level</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Field_StartDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Field_StartDate</shortDescription>
+        <value>Start Date</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Field_EndDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Field_EndDate</shortDescription>
+        <value>End Date</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Field_BoostBury</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Field_BoostBury</shortDescription>
+        <value>Boost/Bury</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Field_ApplicableProducts</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Field_ApplicableProducts</shortDescription>
+        <value>Select Applicable Products</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Configure_Description</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Configure_Description</shortDescription>
+        <value>Click here to View, Create and Delete Boost and Burry Rule</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Configure_Header</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Configure_Header</shortDescription>
+        <value>Configure Boost and Burry Rule</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Configure_Cancel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Configure_Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Applicable_Product_Header</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Applicable_Product_Header</shortDescription>
+        <value>Applicable Products</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Applicable_Product_Cancel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Applicable_Product_Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Header_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Header_Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Header_Action</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Header_Action</shortDescription>
+        <value>Action</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Header_Level</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Header_Level</shortDescription>
+        <value>Level</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Header_StartDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Header_StartDate</shortDescription>
+        <value>Start Date</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Header_EndDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Header_EndDate</shortDescription>
+        <value>End Date</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Header_RuleAction</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Header_RuleAction</shortDescription>
+        <value>Manage Rule</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Header_ViewProduct_Action</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Header_ViewProduct_Action</shortDescription>
+        <value>View Products</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Header_Delete_Action</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Header_Delete_Action</shortDescription>
+        <value>Delete Rule</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Not_Found</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Not_Found</shortDescription>
+        <value>Use add rule tab to create new rule</value>
+    </labels>
+    <labels>
+        <fullName>BoostBury_Rule_Saved</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Saved</shortDescription>
+        <value>Rule Saved Successfully.</value>
+    </labels>
+     <labels>
+        <fullName>BoostBury_Rule_Delete</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BoostBury_Rule_Delete</shortDescription>
+        <value>Rule Deleted Successfully.</value>
+    </labels>
+</CustomLabels>

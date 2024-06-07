@@ -1,0 +1,15 @@
+<template>
+    <lightning-layout vertical-align="end">
+        <lightning-layout-item padding="horizontal-small" size="4" flexibility="auto">
+            <lightning-input 
+                type="number"
+                name="totalQuantity"
+                label="totalQuantity"
+                value={quantityFirst}
+                onchange={changeQuantity}
+                variant="label-hidden">
+            </lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+    <p class="cartQuantity">{_cartQuantity} in cart</p>
+</template>

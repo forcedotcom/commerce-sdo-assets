@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>B2B Product Compare Selection</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Message Channel to pass product compare selection Events</description>
+        <lightningMessageFields>
+            <fieldName>productId</fieldName>
+            <description>This is the selected product</description>
+        </lightningMessageFields>
+        <lightningMessageFields>
+            <fieldName>isSelected</fieldName>
+            <description>This is a boolean value</description>
+        </lightningMessageFields>
+        <lightningMessageFields>
+            <fieldName>productDetails</fieldName>
+            <description>This is a Json representation of the selected product</description>
+        </lightningMessageFields>
+</LightningMessageChannel>

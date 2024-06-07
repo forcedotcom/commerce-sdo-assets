@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>B2B Product Compare Results</masterLabel>
+    <description>Displays products selected for comparison</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            
+            <property name="heading" label="Heading" description="Heading text to display above the component" type="String"/>
+            <property name="headingSize" label="Heading Size" type="String" datasource="Small,Medium,Large" default="Small"/>
+            <property name="headingAlignment" label="Heading Alignment" type="String" datasource="Left,Center,Right" default="Left"/>
+            <property name="headingColor" label="Heading Color" type="Color" default="rgba(0, 0, 0, 1)"/>
+            
+            <property name="hideSku" label="Hide the SKU for each product" type="Boolean" default="false"/>
+            <property name="hideAddToCart" label="Hide a quantity field and an Add to Cart button for each product" type="Boolean" default="false"/>
+            <property name="goToCart" label="Navigate to the Cart page immediately after clicking Add to Cart" type="Boolean" default="false"/>
+            <property name="hideSavings" label="Hide the user's calculated cost savings for each product" type="Boolean" default="false"/>
+            <property name="hideListPrice" label="Hide the list price for each product" type="Boolean" default="false"/>
+            <property name="hideDescription" label="Hide the short description for each product" type="Boolean" default="false"/>
+
+            <property name="displayPrices" label="Display pricing for each product" type="Boolean" default="true"/>
+            <property name="facetFields" label="Comma-separated list of facet fields (API names)" type="String"/>
+
+            <property name="effectiveAccountId" label="Effective Account Id (BETA)" description="The ID of the account under which the user is acting (BETA)" type="String" default="{!User.Commerce.EffectiveAccount.id}"/>
+        </targetConfig>
+    </targetConfigs>    
+</LightningComponentBundle>

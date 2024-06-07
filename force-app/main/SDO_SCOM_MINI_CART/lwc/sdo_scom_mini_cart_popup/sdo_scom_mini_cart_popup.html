@@ -1,0 +1,60 @@
+<template lwc:render-mode="light">
+    <div onmouseover={showData}>
+        <span class="cart-container slds-dropdown-trigger slds-p-around_xxx-small" style={customStyles}>
+            <a href={_cartPageUrl}>
+                <span class="slds-icon_container icon-container" title={iconAssistiveText}>
+                    <svg tabindex="-1"
+                        class="slds-icon slds-icon-text-default slds-icon_small slds-global-actions__notifications slds-global-actions__item-action"
+                        aria-hidden="true">
+                        <use href={iconUrl}></use>
+                    </svg>
+                    <span class="slds-assistive-text">{iconAssistiveText}</span>
+                </span>
+            </a>
+            <span if:true={showBadge} aria-hidden="true" class="slds-notification-badge show-notification">
+                {badgeItemsCount}
+            </span>
+        </span>
+        <template lwc:if={showPopup}>
+            <div>
+                <section 
+                    aria-label="Dialog title" 
+                    aria-describedby="popover-body-id"
+                    class="slds-popover slds-nubbin_top-right minicart" 
+                    role="dialog">
+
+                    <button
+                        class="slds-button slds-button_icon slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"
+                        title="Close dialog" onclick={hideData}>
+                        <svg class="slds-button__icon" aria-hidden="true">
+                            <use href={closeIcon}></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close dialog</span>
+                    </button>
+
+                    <div id="popover-body-id" class="slds-popover__body">
+                        <c-sdo_scom_mini_cart_popup_items items={cartItems}></c-sdo_scom_mini_cart_popup_items>
+                    </div>
+
+                    <div>
+                        <label class="description-name-label">Subtotal: </label>
+                        <lightning-formatted-number  
+                            currency-code={currencyCode} 
+                            format-style="currency"
+                            maximum-fraction-digits="20" 
+                            value={subtotal}></lightning-formatted-number>
+                    </div>
+
+                    <div class="slds-p-top_xx-small pop-up-footer">
+                        <a href={_cartPageUrl}>
+                            <button class="slds-button slds-button_brand slds-m-left_x-large">Go to Cart</button>
+                        </a>
+                        <a href={_checkoutUrl}>
+                            <button class="slds-button slds-button_brand slds-m-left_x-large">Checkout</button>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>B2B Product Compare Tray</masterLabel>
+    <description>Displays products selected for comparison</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="showHeading" label="Show Heading" type="Boolean" default="true"/>
+            <property name="heading" label="Heading" description="Heading text to display above the component" type="String"/>
+            <property name="headingSize" label="Heading Size" type="String" datasource="Small,Medium,Large" default="Small"/>
+            <property name="headingAlignment" label="Heading Alignment" type="String" datasource="Left,Center,Right" default="Left"/>
+            <property name="headingColor" label="Heading Color" type="Color" default="rgba(0, 0, 0, 1)"/>
+            <property name="skuColor" label="SKU Color" type="Color" default="rgba(0, 0, 0, 1)"/>
+            <property name="comparePageUri" label="Compare Page URI" description="The URI to the page that will display the compare results (ex: /product-compare)" type="String"/>
+            <property name="effectiveAccountId" label="Effective Account Id (BETA)" description="The ID of the account under which the user is acting (BETA)" type="String" default="{!User.Commerce.EffectiveAccount.id}"/>
+        </targetConfig>
+    </targetConfigs>    
+</LightningComponentBundle>

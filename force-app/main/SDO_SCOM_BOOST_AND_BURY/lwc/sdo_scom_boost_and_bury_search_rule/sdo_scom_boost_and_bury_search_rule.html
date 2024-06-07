@@ -1,0 +1,40 @@
+<template>
+    <div>
+        <div class="slds-card">
+            <lightning-layout>
+                <lightning-layout-item size="12" class="slds-p-around_x-small" >
+                    <h6 class="slds-p-around_large" style="display: inline-block;">{label.BoostBury_Configure_Description}</h6>
+                    <lightning-button variant="brand" class="slds-form-element" icon-name="utility:custom_apps" label="Configure"  onclick={toggleConfigureModel} ></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div> 
+
+        <template if:true={isConfigureModel}>
+            <section class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <div style="text-align:center;">
+                            <h2 style="display:inline-block" class="slds-text-heading_medium slds-hyphenate">{label.BoostBury_Configure_Header}</h2>      
+                        </div>
+                    </header>
+                
+                    <div class="slds-modal__content slds-p-around_medium" >
+                        <lightning-tabset>
+                            <lightning-tab label="View Rule"> 
+                                <c-sdo_scom_boost_and_bury_view_rule web-store-id={recordId}></c-sdo_scom_boost_and_bury_view_rule>
+                            </lightning-tab>
+                            <lightning-tab label="Add Rule">
+                                <c-sdo_scom_boost_and_bury_add_rule web-store-id={recordId} onsave={refreshList}></c-sdo_scom_boost_and_bury_add_rule>
+                            </lightning-tab>
+                        </lightning-tabset>
+                    </div>
+
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={toggleConfigureModel}>{label.BoostBury_Configure_Cancel}</button>
+                    </footer>           
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>  
+    </div>
+</template>
