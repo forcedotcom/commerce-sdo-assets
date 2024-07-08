@@ -2,6 +2,8 @@ import { LightningElement, api, track, wire } from 'lwc';
 import getCustomObjects from '@salesforce/apex/Sdo_scom_product_reviews.getCustomObjects';
 import PRODUCT_AVG_RATING from "@salesforce/schema/Product2.Product_Average_Rating__c";
 import { SessionContextAdapter } from 'commerce/contextApi';
+import { updateRecord } from 'lightning/uiRecordApi';
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 const ITEMS_PER_PAGE = 5;
 
