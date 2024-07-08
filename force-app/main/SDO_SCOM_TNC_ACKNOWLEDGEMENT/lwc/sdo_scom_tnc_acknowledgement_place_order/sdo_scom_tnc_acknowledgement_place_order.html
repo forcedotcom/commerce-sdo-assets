@@ -1,5 +1,5 @@
 <template>
-    <div if:true={displayPlaceOrder} class="container">
+    <div class="container">
         <div class="input-container">
             <input
                 type="checkbox"
@@ -20,10 +20,4 @@
             {error}
         </label>
     </div>
-            
-    <button class="checkout-button slds-button slds-button_brand"
-            onclick={handleButtonClick}
-            disabled={disabled}>
-        {buttonTitle}
-    </button>
 </template>
