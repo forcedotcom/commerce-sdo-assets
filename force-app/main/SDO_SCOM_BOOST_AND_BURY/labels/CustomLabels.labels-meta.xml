@@ -54,14 +54,14 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>BoostBury_Configure_Description</shortDescription>
-        <value>Click here to View, Create and Delete Boost and Burry Rule</value>
+        <value>Click here to View, Create and Delete Boost and Bury Rule</value>
     </labels>
     <labels>
         <fullName>BoostBury_Configure_Header</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>BoostBury_Configure_Header</shortDescription>
-        <value>Configure Boost and Burry Rule</value>
+        <value>Configure Boost and Bury Rule</value>
     </labels>
     <labels>
         <fullName>BoostBury_Configure_Cancel</fullName>
