@@ -2,7 +2,7 @@
 public with sharing class Sdo_Scom_Order_Grid_Controller{
 	//Method to get the list of order products owned by the current community user
 	@AuraEnabled(cacheable=true)
-	public static OrderGridWrapper getOrderProducts(String communityId, String effectiveAccountId, String productIdTest){
+	public static Sdo_Scom_Order_Grid_Wrapper getOrderProducts(String communityId, String effectiveAccountId, String productIdTest){
 		System.debug('Inside OrderGridController  communityId:{}' + communityId);
 		System.debug('Inside OrderGridController  acc id:{}' + effectiveAccountId);
 		System.debug('Inside OrderGridController  productIdTest:{}' + productIdTest);
@@ -31,19 +31,19 @@ public with sharing class Sdo_Scom_Order_Grid_Controller{
 		
 		//Stores the list of order products returned by the SOQL query. This list doesn't doesn't contain the
 		//product image information which requires a connect API call.
-		List<OrderProductWrapper> orderProductWrappers = new List<OrderProductWrapper>();
+		List<Sdo_Scom_Order_Product_Wrapper> orderProductWrappers = new List<Sdo_Scom_Order_Product_Wrapper>();
 		
 		//Stores the list of order products that have product entitlements with their images.
-		List<OrderProductWrapper> orderProductWrappersTwo = new List<OrderProductWrapper>();
+		List<Sdo_Scom_Order_Product_Wrapper> orderProductWrappersTwo = new List<Sdo_Scom_Order_Product_Wrapper>();
 		
-		OrderGridWrapper orderGridWrapper = new OrderGridWrapper();
+		Sdo_Scom_Order_Grid_Wrapper orderGridWrapper = new Sdo_Scom_Order_Grid_Wrapper();
 		
 		if(orderProducts.size() > 0){
 			Set<String> productIds = new Set<String>();
 			
 			//Loops through the order product list and creates the orderProductWrappers list.
 			for(OrderItem op: orderProducts){
-				OrderProductWrapper opw = new OrderProductWrapper();
+				Sdo_Scom_Order_Product_Wrapper opw = new Sdo_Scom_Order_Product_Wrapper();
 				opw.Id = op.Id;
 				opw.orderId = op.Order.Id;
 				opw.orderedDate = op.Order.OrderedDate;
@@ -84,7 +84,7 @@ public with sharing class Sdo_Scom_Order_Grid_Controller{
 			//and create the order product wrappers 2 list with the product image URLs.
 			for(Integer i = 0; i < orderProductWrappers.size(); i++){
 				Boolean productFound = false;
-				OrderProductWrapper opw = orderProductWrappers[i];
+				Sdo_Scom_Order_Product_Wrapper opw = orderProductWrappers[i];
 				for(ConnectApi.ProductDetail product : products){
 					System.debug('product :{}'+product);
 					if(product.id == opw.productId){
@@ -123,26 +123,26 @@ public with sharing class Sdo_Scom_Order_Grid_Controller{
 		else{
 			return null;
 		}
-		
 		return orderGridWrapper;
 	}
 	
 	//Method to grab the items in the current user's cart
 	@AuraEnabled(cacheable=true)
-	public static CartSummaryWrapper getCartSummary(String webstoreId, String effectiveAccountId){
+	public static Sdo_Scom_Cart_Summary_Wrapper getCartSummary(String webstoreId, String effectiveAccountId){
 		if(String.isBlank(webstoreId)){
+
 			return null;
 		}
 		
 		ConnectApi.CartItemCollection cartItemCollection;
-		CartSummaryWrapper cartSummary = new CartSummaryWrapper();
-		List<CartProductWrapper> cartItems = new List<CartProductWrapper>();
+		Sdo_Scom_Cart_Summary_Wrapper cartSummary = new Sdo_Scom_Cart_Summary_Wrapper();
+		List<Sdo_Scom_Cart_Product_Wrapper> cartItems = new List<Sdo_Scom_Cart_Product_Wrapper>();
 		
 		//Returns a fake cart summary during a test for code coverage
 		if(Test.isRunningTest()){
 			cartSummary.cartId = 'testCartId1';
 			
-			CartProductWrapper cartItem = new CartProductWrapper();
+			Sdo_Scom_Cart_Product_Wrapper cartItem = new Sdo_Scom_Cart_Product_Wrapper();
 			cartItem.productId = 'testProductId1';
 			cartItem.quantity = 1;
 			cartItem.errorMessage = 'testErrorMessage';
@@ -163,7 +163,7 @@ public with sharing class Sdo_Scom_Order_Grid_Controller{
 			System.debug('cart items collection to string :'+cartItemCollection.toString());
 			for(ConnectApi.CartItemResult cartItemResult : cartItemCollection.cartItems){
 				if(cartItemResult.cartItem != null){
-					CartProductWrapper cartItem = new CartProductWrapper();
+					Sdo_Scom_Cart_Product_Wrapper cartItem = new Sdo_Scom_Cart_Product_Wrapper();
 					cartItem.productId = cartItemResult.cartItem.productId;
 					cartItem.quantity = Integer.valueOf(cartItemResult.cartItem.quantity);
 					cartItem.errorMessage = cartItemResult.message;
@@ -182,12 +182,12 @@ public with sharing class Sdo_Scom_Order_Grid_Controller{
 	//even though there aren't any Apex errors which makes it so I can't do accurate error handling.
 	//Returning a list of wrapper classes solves both problems.
 	@AuraEnabled
-	public static List<CartProductWrapper> addToCart(String productsJSON, String communityId, String effectiveAccountId){
+	public static List<Sdo_Scom_Cart_Product_Wrapper> addToCart(String productsJSON, String communityId, String effectiveAccountId){
 		String webstoreId = getStoreId(communityId);
 		
 		List<Object> cartProducts = (List<Object>)JSON.deserializeUntyped(productsJSON);
 		List<ConnectApi.BatchInput> batchInputList = new List<ConnectApi.BatchInput>();
-		List<CartProductWrapper> cartItemWrappers = new List<CartProductWrapper>();
+		List<Sdo_Scom_Cart_Product_Wrapper> cartItemWrappers = new List<Sdo_Scom_Cart_Product_Wrapper>();
 		System.debug('Inside OrderGridController  addToCart communityId:{}' + communityId);
 		System.debug('Inside OrderGridController  addToCart acc id:{}' + effectiveAccountId);
 		System.debug('Inside OrderGridController addToCart productsJson:{}' + productsJSON);
@@ -196,7 +196,7 @@ public with sharing class Sdo_Scom_Order_Grid_Controller{
 		for(Object cartProduct : cartProducts){
 			Map<String, Object> cpObjectMap = (Map<String, Object>)cartProduct;
 			ConnectApi.CartItemInput cartItem = new ConnectApi.CartItemInput();
-			CartProductWrapper cartItemWrapper = new CartProductWrapper();
+			Sdo_Scom_Cart_Product_Wrapper cartItemWrapper = new Sdo_Scom_Cart_Product_Wrapper();
 			
 			cartItem.productId = (String)cpObjectMap.get('productId');
 			cartItemWrapper.productId = cartItem.productId;
