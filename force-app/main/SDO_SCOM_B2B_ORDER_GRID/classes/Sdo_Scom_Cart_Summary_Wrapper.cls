@@ -13,5 +13,5 @@ public with sharing class Sdo_Scom_Cart_Summary_Wrapper{
     public String totalAmount{get;set;}
 
     @AuraEnabled
-    public List<CartProductWrapper> cartItems{get;set;}
+    public List<Sdo_Scom_Cart_Product_Wrapper> cartItems{get;set;}
 }
