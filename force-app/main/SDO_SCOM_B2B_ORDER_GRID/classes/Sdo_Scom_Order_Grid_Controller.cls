@@ -123,7 +123,6 @@ public with sharing class Sdo_Scom_Order_Grid_Controller{
 		else{
 			return null;
 		}
-		
 		return orderGridWrapper;
 	}
 	
@@ -131,7 +130,7 @@ public with sharing class Sdo_Scom_Order_Grid_Controller{
 	@AuraEnabled(cacheable=true)
 	public static Sdo_Scom_Cart_Summary_Wrapper getCartSummary(String webstoreId, String effectiveAccountId){
 		if(String.isBlank(webstoreId)){
-			
+
 			return null;
 		}
 		
